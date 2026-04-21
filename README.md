@@ -7,5 +7,5 @@ The conda environment is mmseg.yaml.
 
 ## Training
 
-We provide our training log file in this project: Training_Log.log.
+We provide our training log file in this project: Training_Log.log. The best results are obtained at the iteration 93900.
 
