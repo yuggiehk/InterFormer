@@ -1,7 +1,6 @@
 # InterFormer
 
-Official implementation of the paper: **"Interaction-aware Representation Modeling with Co-occurrence Consistency for Egocentric Hand-Object Parsing"**  
-*ICLR 2026*
+Official implementation of the paper: **"Interaction-aware Representation Modeling with Co-occurrence Consistency for Egocentric Hand-Object Parsing"**, *ICLR 2026*
 
 ---
 
@@ -58,7 +57,7 @@ conda activate mmseg
 
 3. Update the dataset path in the configuration file:
    ```bash
-   # Edit config/config_interformer.py
+   # Edit ./mmseg/configs/config_interformer.py
    # Change the dataset path to your extracted folder
    data_root = '/path/to/your/dataset/folder'
    ```
@@ -76,7 +75,7 @@ wget https://drive.google.com/file/d/13Wd08wkbscxAR1TAgaNWQ2_luYC9pahs/view?usp=
 
 Alternatively, download manually from [this link](https://drive.google.com/file/d/13Wd08wkbscxAR1TAgaNWQ2_luYC9pahs/view?usp=drive_link) and place it in the `pretrained_model/` directory.
 
-Then update the pretrained path in `config/config_interformer.py`:
+Then update the pretrained path in `./mmseg/configs/config_interformer.py `:
 ```python
 pretrained = '/path/to/pretrained_model/backbone.pth'
 ```
@@ -90,7 +89,7 @@ pretrained = '/path/to/pretrained_model/backbone.pth'
 Run the following command for single-GPU training:
 
 ```bash
-python tools/train.py config/config_interformer.py
+python tools/train.py ./mmseg/configs/config_interformer.py
 ```
 
 ### Multi-GPU Training
@@ -98,12 +97,12 @@ python tools/train.py config/config_interformer.py
 For multi-GPU training, use the distributed training script:
 
 ```bash
-bash tools/dist_train.sh config/config_interformer.py <NUM_GPUS>
+bash tools/dist_train.sh ./mmseg/configs/config_interformer.py <NUM_GPUS>
 ```
 
 Example (4 GPUs):
 ```bash
-bash tools/dist_train.sh config/config_interformer.py 4
+bash tools/dist_train.sh ./mmseg/configs/config_interformer.py py 4
 ```
 
 ### Training Log
@@ -136,40 +135,6 @@ We provide our trained checkpoint for reproduction:
 - **Download link**: [Google Drive](https://drive.google.com/file/d/172Hi0jTTijEnbroYSUZgOfpsyue_HHxg/view?usp=drive_link)
 
 Download and use it for testing or inference.
-
----
-
-## Results
-
-We provide test log files for the following benchmarks:
-
-| Dataset | Type | Log File |
-|---------|------|----------|
-| EgoHOS | In-domain | `test_log_egohos_indomain.log` |
-| EgoHOS | Out-of-domain | `test_log_egohos_outdomain.log` |
-| mini-HOI4D | - | `test_log_minihoi4d.log` |
-
----
-
-## File Structure
-
-```
-InterFormer/
-├── config/
-│   └── config_interformer.py      # Configuration file
-├── tools/
-│   ├── train.py                    # Training script
-│   ├── test.py                     # Testing script
-│   └── dist_train.sh               # Multi-GPU training script
-├── pretrained_model/               # Pretrained backbone
-├── work_dirs/                      # Training outputs & checkpoints
-├── mmseg.yaml                      # Conda environment
-├── Training_Log.log                # Training log
-├── test_log_egohos_indomain.log    # EgoHOS in-domain test log
-├── test_log_egohos_outdomain.log   # EgoHOS out-of-domain test log
-├── test_log_minihoi4d.log          # mini-HOI4D test log
-└── README.md                       # This file
-```
 
 ---
 
